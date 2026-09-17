@@ -105,6 +105,51 @@
             margin-top: 25px;
             font-size: 18px;
         }
+
+        /* Dark Theme */
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark h1 {
+            color: white;
+        }
+
+        body.dark .search-box {
+            background-color: #333;
+        }
+
+        body.dark label {
+            color: white;
+        }
+
+        body.dark input {
+            background-color: #444;
+            color: white;
+            border-color: #666;
+        }
+
+        body.dark input::placeholder {
+            color: #ccc;
+        }
+
+        body.dark table {
+            background-color: #333;
+        }
+
+        body.dark td {
+            color: white;
+            border-color: #555;
+        }
+
+        body.dark tr:hover {
+            background-color: #444;
+        }
+
+        body.dark .no-result {
+            color: #ccc;
+        }
     </style>
 </head>
 
@@ -174,6 +219,12 @@
     </p>
 
     {% endif %}
+
+    <script>
+        if (localStorage.getItem("theme") == "dark") {
+            document.body.classList.add("dark");
+        }
+    </script>
 
 </body>
 </html>

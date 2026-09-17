@@ -12,6 +12,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7fc;
+            color: black;
         }
 
         /* Navbar */
@@ -90,6 +91,33 @@
             color: #555;
             font-size: 18px;
         }
+
+        /* Theme */
+        .theme-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .theme-toggle a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark .content h1 {
+            color: white;
+        }
+
+        body.dark .content p {
+            color: white;
+        }
     </style>
 </head>
 
@@ -103,31 +131,39 @@
 
         <ul class="nav-links">
 
-    <li>
-        <a href="/home">Home</a>
-    </li>
+            <li>
+                <a href="/home">Home</a>
+            </li>
 
-    <li>
-        <a href="/employees">Employees</a>
-    </li>
+            <li>
+                <a href="/employees">Employees</a>
+            </li>
 
-    <li>
-        <a href="/addemployee">Add Employee</a>
-    </li>
+            <li>
+                <a href="/addemployee">Add Employee</a>
+            </li>
 
-    <li>
-        <a href="/search">Search</a>
-    </li>
+            <li>
+                <a href="/search">Search</a>
+            </li>
 
-    <li>
-        <a href="/login">Login</a>
-    </li>
+            <li>
+                <a href="/login">Login</a>
+            </li>
 
-    <li>
-        <a href="/register">Register</a>
-    </li>
+            <li>
+                <a href="/register">Register</a>
+            </li>
 
-</ul>
+            <li>
+                <div class="theme-toggle">
+                    <a href="#" onclick="lightTheme()">☀️ Light</a>
+                    <a href="#" onclick="darkTheme()">🌙 Dark</a>
+                </div>
+            </li>
+
+        </ul>
+
     </nav>
 
     <div class="content">
@@ -137,6 +173,18 @@
         <p>Manage your employes easily</p>
 
     </div>
+
+    <script>
+    function lightTheme() {
+        document.body.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+    }
+
+    function darkTheme() {
+        document.body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+    }
+</script>
 
 </body>
 

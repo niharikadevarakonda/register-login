@@ -54,6 +54,34 @@
         .delete-btn:hover {
             text-decoration: underline;
         }
+
+        /* Dark Theme */
+
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark h1 {
+            color: white;
+        }
+
+        body.dark table {
+            background-color: #333;
+        }
+
+        body.dark td {
+            color: white;
+            border-color: #555;
+        }
+
+        body.dark .edit-btn {
+            color: #c084d6;
+        }
+
+        body.dark tr:hover {
+            background-color: #444;
+        }
     </style>
 </head>
 
@@ -99,6 +127,12 @@
         {% endfor %}
 
     </table>
+
+    <script>
+        if (localStorage.getItem("theme") == "dark") {
+            document.body.classList.add("dark");
+        }
+    </script>
 
 </body>
 </html>

@@ -17,6 +17,7 @@
         body {
             font-family: Arial, sans-serif;
             color: #302b63;
+            background-color: #f4f7fc;
         }
 
         /* Hero Section */
@@ -107,6 +108,43 @@
             line-height: 1.6;
         }
 
+        /* Dark Theme */
+
+        body.dark {
+            background-color: #222;
+            color: white;
+        }
+
+        body.dark .hero h1 {
+            color: white;
+        }
+
+        body.dark .hero h1 span {
+            color: #c084d6;
+        }
+
+        body.dark .hero p {
+            color: white;
+        }
+
+        body.dark .about h2 {
+            color: white;
+        }
+
+        body.dark .about p {
+            color: white;
+        }
+
+        body.dark .view-btn {
+            color: white;
+            border-color: white;
+        }
+
+        body.dark .add-btn {
+            color: #c084d6;
+            border-color: #c084d6;
+        }
+
         /* Responsive */
 
         @media (max-width: 600px) {
@@ -169,6 +207,17 @@
         </p>
 
     </section>
+
+
+    <!-- Theme -->
+
+    <script>
+
+        if (localStorage.getItem("theme") == "dark") {
+            document.body.classList.add("dark");
+        }
+
+    </script>
 
 </body>
 </html>
