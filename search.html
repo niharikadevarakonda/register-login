@@ -1,230 +1,246 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Search Employee</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Search Employee</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        h1 {
-            text-align: center;
-            color: #302b63;
-            margin-top: 50px;
-            margin-bottom: 30px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+    }
 
-        /* Search box */
-        .search-box {
-            width: 400px;
-            margin: auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+        text-align: center;
+        color: #302b63;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
 
-        label {
-            color: #302b63;
-            font-weight: bold;
-        }
+    /* Search box */
+    .search-box {
+        width: 400px;
+        margin: auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+        color: #302b63;
+        font-weight: bold;
+    }
 
-        input:focus {
-            border-color: #8e44ad;
-            outline: none;
-        }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-        /* Search button */
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #8e44ad;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    input:focus {
+        border-color: #8e44ad;
+        outline: none;
+    }
 
-        button:hover {
-            background-color: #732d91;
-        }
+    /* Search button */
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-        /* Result */
-        .result {
-            width: 90%;
-            margin: 30px auto;
-        }
+    button:hover {
+        background-color: #732d91;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
+    /* Result */
+    .result {
+        width: 90%;
+        margin: 30px auto;
+    }
 
-        th {
-            background-color: #302b63;
-            color: white;
-            padding: 12px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
+    th {
+        background-color: #302b63;
+        color: white;
+        padding: 12px;
+    }
 
-        tr:hover {
-            background-color: #f1e8f7;
-        }
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
 
-        .no-result {
-            text-align: center;
-            color: #777;
-            margin-top: 25px;
-            font-size: 18px;
-        }
+    tr:hover {
+        background-color: #f1e8f7;
+    }
 
-        /* Dark Theme */
-        body.dark {
-            background-color: #222;
-            color: white;
-        }
+    .no-result {
+        text-align: center;
+        color: #777;
+        margin-top: 25px;
+        font-size: 18px;
+    }
 
-        body.dark h1 {
-            color: white;
-        }
+    /* Dark Theme */
+    body.dark {
+        background-color: #222;
+        color: white;
+    }
 
-        body.dark .search-box {
-            background-color: #333;
-        }
+    body.dark h1 {
+        color: white;
+    }
 
-        body.dark label {
-            color: white;
-        }
+    body.dark .search-box {
+        background-color: #333;
+    }
 
-        body.dark input {
-            background-color: #444;
-            color: white;
-            border-color: #666;
-        }
+    body.dark label {
+        color: white;
+    }
 
-        body.dark input::placeholder {
-            color: #ccc;
-        }
+    body.dark input {
+        background-color: #444;
+        color: white;
+        border-color: #666;
+    }
 
-        body.dark table {
-            background-color: #333;
-        }
+    body.dark input::placeholder {
+        color: #ccc;
+    }
 
-        body.dark td {
-            color: white;
-            border-color: #555;
-        }
+    body.dark table {
+        background-color: #333;
+    }
 
-        body.dark tr:hover {
-            background-color: #444;
-        }
+    body.dark td {
+        color: white;
+        border-color: #555;
+    }
 
-        body.dark .no-result {
-            color: #ccc;
-        }
-    </style>
+    body.dark tr:hover {
+        background-color: #444;
+    }
+
+    body.dark .no-result {
+        color: #ccc;
+    }
+</style>
+
+
 </head>
 
 <body>
 
-    <h1>Search Employee</h1>
 
-    <div class="search-box">
+<h1>Search Employee</h1>
 
-        <form action="/search" method="post">
+<div class="search-box">
 
-            <label>Employee Name:</label>
+    <form action="/search" method="post">
 
-            <input
-                type="text"
-                name="search_name"
-                placeholder="Enter employee name"
-                value="{{ search_name }}"
-                required
-            >
+        <label>Employee Name:</label>
 
-            <button type="submit">
-                Search
-            </button>
+        <input
+            type="text"
+            name="search_name"
+            placeholder="Enter employee name"
+            value="{{ search_name }}"
+            required
+        >
 
-        </form>
+        <button type="submit">
+            Search
+        </button>
 
-    </div>
+    </form>
+
+</div>
 
 
-    <!-- Search Result -->
+<!-- Search Result -->
 
-    {% if employees %}
+{% if employees %}
 
-    <div class="result">
+<div class="result">
 
-        <table>
+    <table>
 
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Department</th>
-                <th>Phone</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Phone</th>
+        </tr>
 
-            {% for employee in employees %}
+        {% for employee in employees %}
 
-            <tr>
-                <td>{{ employee[0] }}</td>
-                <td>{{ employee[1] }}</td>
-                <td>{{ employee[2] }}</td>
-                <td>{{ employee[3] }}</td>
-                <td>{{ employee[4] }}</td>
-            </tr>
+        <tr>
+            <td>{{ employee[0] }}</td>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+        </tr>
 
-            {% endfor %}
+        {% endfor %}
 
-        </table>
+    </table>
 
-    </div>
+</div>
 
-    {% elif search_name %}
+{% elif search_name %}
 
-    <p class="no-result">
-        No employee found with the name "{{ search_name }}"
-    </p>
+<p class="no-result">
+    No employee found with the name "{{ search_name }}"
+</p>
 
-    {% endif %}
+{% endif %}
 
-    <script>
-        if (localStorage.getItem("theme") == "dark") {
+<script>
+
+    let cookies = document.cookie.split(";");
+
+    for (let cookie of cookies) {
+
+        let parts = cookie.trim().split("=");
+
+        if (parts[0] == "theme" && parts[1] == "dark") {
             document.body.classList.add("dark");
         }
-    </script>
+
+    }
+
+</script>
+
 
 </body>
 </html>

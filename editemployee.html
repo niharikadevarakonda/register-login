@@ -1,128 +1,144 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Edit Employee</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
-        }
 
-        h1 {
-            text-align: center;
-            color: #302b63;
-            margin-top: 40px;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+    }
 
-        form {
-            width: 400px;
-            margin: 30px auto;
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-        }
+    h1 {
+        text-align: center;
+        color: #302b63;
+        margin-top: 40px;
+    }
 
-        label {
-            display: block;
-            margin-top: 15px;
-            color: #302b63;
-            font-weight: bold;
-        }
+    form {
+        width: 400px;
+        margin: 30px auto;
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+    }
 
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            box-sizing: border-box;
-        }
+    label {
+        display: block;
+        margin-top: 15px;
+        color: #302b63;
+        font-weight: bold;
+    }
 
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px;
-            background-color: #302b63;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
 
-        button:hover {
-            background-color: #8e44ad;
-        }
+    button {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px;
+        background-color: #302b63;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 
-        /* Dark Theme */
-        body.dark {
-            background-color: #222;
-            color: white;
-        }
+    button:hover {
+        background-color: #8e44ad;
+    }
 
-        body.dark h1 {
-            color: white;
-        }
+    /* Dark Theme */
+    body.dark {
+        background-color: #222;
+        color: white;
+    }
 
-        body.dark form {
-            background-color: #333;
-        }
+    body.dark h1 {
+        color: white;
+    }
 
-        body.dark label {
-            color: white;
-        }
+    body.dark form {
+        background-color: #333;
+    }
 
-        body.dark input,
-        body.dark select {
-            background-color: #444;
-            color: white;
-            border-color: #666;
-        }
+    body.dark label {
+        color: white;
+    }
 
-        body.dark button {
-            background-color: #8e44ad;
-        }
-    </style>
+    body.dark input,
+    body.dark select {
+        background-color: #444;
+        color: white;
+        border-color: #666;
+    }
+
+    body.dark button {
+        background-color: #8e44ad;
+    }
+</style>
+
+
 </head>
 
 <body>
 
-    <h1>Edit Employee</h1>
 
-    <form action="/edit/{{ employee[0] }}" method="post">
+<h1>Edit Employee</h1>
 
-        <label>Full Name:</label>
-        <input type="text"
-               name="fullname"
-               value="{{ employee[1] }}"
-               required>
+<form action="/edit/{{ employee[0] }}" method="post">
 
-        <label>Email:</label>
-        <input type="email"
-               name="email"
-               value="{{ employee[2] }}"
-               required>
+    <label>Full Name:</label>
+    <input type="text"
+           name="fullname"
+           value="{{ employee[1] }}"
+           required>
 
-        <label>Department:</label>
-        <select name="department" required>
-            <option value="IT" {% if employee[3] == "IT" %}selected{% endif %}>IT</option>
-            <option value="HR" {% if employee[3] == "HR" %}selected{% endif %}>HR</option>
-            <option value="Finance" {% if employee[3] == "Finance" %}selected{% endif %}>Finance</option>
-            <option value="Marketing" {% if employee[3] == "Marketing" %}selected{% endif %}>Marketing</option>
-        </select>
+    <label>Email:</label>
+    <input type="email"
+           name="email"
+           value="{{ employee[2] }}"
+           required>
 
-        <label>Phone:</label>
-        <input type="text"
-               name="phone"
-               value="{{ employee[4] }}"
-               required>
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="IT" {% if employee[3] == "IT" %}selected{% endif %}>IT</option>
+        <option value="HR" {% if employee[3] == "HR" %}selected{% endif %}>HR</option>
+        <option value="Finance" {% if employee[3] == "Finance" %}selected{% endif %}>Finance</option>
+        <option value="Marketing" {% if employee[3] == "Marketing" %}selected{% endif %}>Marketing</option>
+    </select>
 
-        <button type="submit">Update Employee</button>
+    <label>Phone:</label>
+    <input type="text"
+           name="phone"
+           value="{{ employee[4] }}"
+           required>
 
-    </form>
+    <button type="submit">Update Employee</button>
 
-    <script>
-        if (localStorage.getItem("theme") == "dark") {
+</form>
+
+<script>
+
+    let cookies = document.cookie.split(";");
+
+    for (let cookie of cookies) {
+
+        let parts = cookie.trim().split("=");
+
+        if (parts[0] == "theme" && parts[1] == "dark") {
             document.body.classList.add("dark");
         }
-    </script>
+
+    }
+
+</script>
+
 
 </body>
 </html>

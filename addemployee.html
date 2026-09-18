@@ -1,145 +1,161 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Add Employee</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        h1 {
-            text-align: center;
-            color: #302b63;
-            margin-top: 40px;
-            margin-bottom: 30px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+    }
 
-        /* Employee form */
-        form {
-            background-color: white;
-            width: 400px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+        text-align: center;
+        color: #302b63;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
 
-        label {
-            color: #302b63;
-            font-weight: bold;
-        }
+    /* Employee form */
+    form {
+        background-color: white;
+        width: 400px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        input,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            margin-bottom: 18px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+        color: #302b63;
+        font-weight: bold;
+    }
 
-        input:focus,
-        select:focus {
-            border-color: #8e44ad;
-            outline: none;
-        }
+    input,
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-        /* Add button */
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #8e44ad;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    input:focus,
+    select:focus {
+        border-color: #8e44ad;
+        outline: none;
+    }
 
-        button:hover {
-            background-color: #732d91;
-        }
+    /* Add button */
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-        /* Dark Theme */
-        body.dark {
-            background-color: #222;
-            color: white;
-        }
+    button:hover {
+        background-color: #732d91;
+    }
 
-        body.dark h1 {
-            color: white;
-        }
+    /* Dark Theme */
+    body.dark {
+        background-color: #222;
+        color: white;
+    }
 
-        body.dark form {
-            background-color: #333;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
+    body.dark h1 {
+        color: white;
+    }
 
-        body.dark label {
-            color: white;
-        }
+    body.dark form {
+        background-color: #333;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
 
-        body.dark input,
-        body.dark select {
-            background-color: #444;
-            color: white;
-            border-color: #666;
-        }
+    body.dark label {
+        color: white;
+    }
 
-        body.dark input::placeholder {
-            color: #ccc;
-        }
+    body.dark input,
+    body.dark select {
+        background-color: #444;
+        color: white;
+        border-color: #666;
+    }
 
-        body.dark button {
-            background-color: #8e44ad;
-        }
-    </style>
+    body.dark input::placeholder {
+        color: #ccc;
+    }
+
+    body.dark button {
+        background-color: #8e44ad;
+    }
+</style>
+
+
 </head>
 
 <body>
 
-    <h1>Add Employee</h1>
 
-    <form action="/addemployee" method="post">
+<h1>Add Employee</h1>
 
-        <label>Name:</label>
-        <input type="text" name="fullname" placeholder="Enter employee name" required>
+<form action="/addemployee" method="post">
 
-        <label>Email:</label>
-        <input type="email" name="email" placeholder="Enter employee email" required>
+    <label>Name:</label>
+    <input type="text" name="fullname" placeholder="Enter employee name" required>
 
-        <label>Department:</label>
-        <select name="department" required>
-            <option value="">Select Department</option>
-            <option value="IT">IT</option>
-            <option value="HR">HR</option>
-            <option value="Finance">Finance</option>
-            <option value="Marketing">Marketing</option>
-        </select>
+    <label>Email:</label>
+    <input type="email" name="email" placeholder="Enter employee email" required>
 
-        <label>Phone:</label>
-        <input type="text" name="phone" placeholder="Enter phone number" required>
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="">Select Department</option>
+        <option value="IT">IT</option>
+        <option value="HR">HR</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+    </select>
 
-        <button type="submit">Add Employee</button>
+    <label>Phone:</label>
+    <input type="text" name="phone" placeholder="Enter phone number" required>
 
-    </form>
+    <button type="submit">Add Employee</button>
 
-    <script>
-        if (localStorage.getItem("theme") == "dark") {
+</form>
+
+<script>
+
+    let cookies = document.cookie.split(";");
+
+    for (let cookie of cookies) {
+
+        let parts = cookie.trim().split("=");
+
+        if (parts[0] == "theme" && parts[1] == "dark") {
             document.body.classList.add("dark");
         }
-    </script>
+
+    }
+
+</script>
+
 
 </body>
 

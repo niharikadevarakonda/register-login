@@ -74,9 +74,17 @@
     input[type="reset"]:hover {
         background-color: #201c4a;
     }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 8px;
+    }
 </style>
 </head>
+
 <body>
+
     <h2>Registration Form</h2>
 
     <form id="registrationform" action="/register" method="post">
@@ -91,14 +99,17 @@
 
         <label>Password:</label>
         <input type="password" id="password" name="password" required>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
         <br><br>
 
         <input type="submit" value="register">
-        <input type="reset"  value="reset">
+        <input type="reset" value="reset">
 
     </form>
 
 </body>
-
 </html>
-
